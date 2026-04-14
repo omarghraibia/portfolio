@@ -3,82 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Ghraibia Omar | Étudiant en Informatique</title>
+    <title>Omar Ghraibia | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header">
         <nav class="navbar container">
-            <div class="navbar__logo">OG.</div>
+            <div class="navbar__logo">
+                <a href="#hero">Omar<span class="text-primary">.G</span></a>
+            </div>
             
-            <button class="navbar__burger" id="burger-btn" aria-label="Menu">
+            <button class="navbar__burger" id="burger-btn" aria-label="Ouvrir le menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
             <ul class="navbar__links" id="nav-links">
-                <li><a href="#hero" class="navbar__link">Accueil</a></li>
                 <li><a href="#about" class="navbar__link">À propos</a></li>
                 <li><a href="#skills" class="navbar__link">Compétences</a></li>
                 <li><a href="#projects" class="navbar__link">Projets</a></li>
+                <li><a href="#contact" class="navbar__link">Contact</a></li>
             </ul>
 
-            <button class="navbar__theme-toggle" id="theme-btn" aria-label="Changer de thème">
-                🌓
-            </button>
+            <button class="navbar__theme-toggle" id="theme-btn" title="Changer de thème">🌙</button>
         </nav>
     </header>
 
     <main>
-        <section id="hero" class="hero container">
+        <section id="hero" class="hero container reveal">
             <div class="hero__content">
-                <h1 class="hero__title">Étudiant en BUT Informatique <br>& Développeur Full-Stack</h1>
-                <p class="hero__subtitle">Passionné par l'ingénierie logicielle, je conçois des applications robustes et des interfaces esthétiques.</p>
-                <a href="#projects" class="btn btn--primary">Voir mes projets</a>
+                <p class="hero__greeting">👋 Bonjour, je m'appelle</p>
+                <h1 class="hero__title">Omar Ghraibia</h1>
+                <h2 class="hero__subtitle">Étudiant en BUT Informatique & Développeur.</h2>
+                <p class="hero__desc">Actuellement étudiant à Grenoble, je conçois des solutions logicielles et des expériences web performantes. J'aime allier la rigueur de l'ingénierie et l'esthétique du design.</p>
+                <div class="hero__actions">
+                    <a href="#projects" class="btn btn--primary">Explorer mes projets 🚀</a>
+                    <a href="#contact" class="btn btn--outline">Me contacter ✉️</a>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="about container section">
-            <h2 class="section-title">À propos de moi</h2>
-            <p class="about__text">
-                Actuellement en première année de BUT Informatique à Grenoble, je me passionne pour le développement logiciel et web. J'aime comprendre comment les choses fonctionnent sous le capot, que ce soit en concevant des bases de données relationnelles ou en développant des applications complètes. Mon objectif est d'allier logique algorithmique et expérience utilisateur.
-            </p>
+        <section id="about" class="about container section reveal">
+            <h2 class="section-title">À propos de moi 👨‍💻</h2>
+            <div class="about__content">
+                <p class="about__text">
+                    En formation universitaire, je me concentre sur la création d'architectures solides et de code propre. Que ce soit en manipulant des bases de données complexes ou en optimisant des interfaces utilisateur, je cherche toujours l'approche la plus logique et efficace. Je suis également investi dans l'écosystème de l'innovation locale.
+                </p>
+            </div>
         </section>
 
-        <section id="skills" class="skills container section">
-            <h2 class="section-title">Mes Compétences</h2>
+        <section id="skills" class="skills container section reveal">
+            <h2 class="section-title">Boîte à outils 🛠️</h2>
             <div class="skills__grid">
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">HTML5 / CSS3</span>
-                <span class="skill-tag">JavaScript (Vanilla)</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">Assembleur 68000</span>
-                <span class="skill-tag">Git / GitHub</span>
+                <div class="skill-tag">☕ Java</div>
+                <div class="skill-tag">🐘 PostgreSQL</div>
+                <div class="skill-tag">🌐 HTML5 / CSS3</div>
+                <div class="skill-tag">⚡ JavaScript (Vanilla)</div>
+                <div class="skill-tag">⚙️ Assembleur 68000</div>
+                <div class="skill-tag">🐙 Git / GitHub</div>
             </div>
         </section>
 
-        <section id="projects" class="projects container section">
-            <h2 class="section-title">Mes Projets</h2>
+        <section id="projects" class="projects container section reveal">
+            <h2 class="section-title">Mes Réalisations 📁</h2>
             <div class="projects__grid">
                 
                 <article class="project-card">
-                    <div class="project-card__img-placeholder">Image Projet 1</div>
+                    <div class="project-card__img-wrapper">
+                        <img src="https://picsum.photos/seed/gtech/600/400" alt="Illustration G-Tech" class="project-card__img">
+                    </div>
                     <div class="project-card__content">
                         <h3 class="project-card__title">G-Tech Circulaire</h3>
-                        <p class="project-card__desc">Projet entrepreneurial de courtage et réemploi de matériel scientifique et high-tech.</p>
+                        <p class="project-card__desc">Projet entrepreneurial centré sur le courtage et le réemploi de matériel scientifique et high-tech dans la région grenobloise.</p>
                         <div class="project-card__tags">
+                            <span class="tag">Entrepreneuriat</span>
                             <span class="tag">Management</span>
-                            <span class="tag">Conception</span>
                         </div>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <div class="project-card__img-placeholder">Image Projet 2</div>
+                    <div class="project-card__img-wrapper">
+                        <img src="https://picsum.photos/seed/java/600/400" alt="App Gestion Java" class="project-card__img">
+                    </div>
                     <div class="project-card__content">
-                        <h3 class="project-card__title">Application de Gestion</h3>
-                        <p class="project-card__desc">Application de bureau permettant la gestion d'une base de données client.</p>
+                        <h3 class="project-card__title">App Gestion BDD</h3>
+                        <p class="project-card__desc">Conception et développement d'une application robuste permettant la manipulation et la gestion d'une base de données clients complète.</p>
                         <div class="project-card__tags">
                             <span class="tag">Java</span>
                             <span class="tag">PostgreSQL</span>
@@ -87,30 +98,44 @@
                 </article>
 
                 <article class="project-card">
-                    <div class="project-card__img-placeholder">Image Projet 3</div>
+                    <div class="project-card__img-wrapper">
+                        <img src="https://picsum.photos/seed/code/600/400" alt="Code Portfolio" class="project-card__img">
+                    </div>
                     <div class="project-card__content">
-                        <h3 class="project-card__title">Portfolio Personnel</h3>
-                        <p class="project-card__desc">Création d'un site web performant sans aucun framework pour consolider mes acquis.</p>
+                        <h3 class="project-card__title">Portfolio Natif</h3>
+                        <p class="project-card__desc">Création de ce portfolio interactif sans aucun framework, pour maîtriser l'architecture CSS et les animations du DOM en JS.</p>
                         <div class="project-card__tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JS</span>
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">JS natif</span>
                         </div>
                     </div>
                 </article>
 
             </div>
         </section>
+
+        <section id="contact" class="contact container section reveal">
+            <div class="contact__box">
+                <h2 class="contact__title">Prêt à collaborer ? 🤝</h2>
+                <p class="contact__text">Je suis toujours ouvert à de nouvelles opportunités de projets ou de stages. N'hésitez pas à m'envoyer un message !</p>
+                <a href="mailto:ton.email@exemple.com" class="btn btn--primary btn--large">Dites Bonjour !</a>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer__content">
-            <p>&copy; 2026 - Portfolio créé de zéro.</p>
-            <div class="footer__links">
-                <a href="#" target="_blank">GitHub</a>
-                <a href="#" target="_blank">LinkedIn</a>
-                <a href="mailto:contact@email.com">Email</a>
+        <div class="container footer__container">
+            <div class="footer__brand">
+                <h3>Omar Ghraibia</h3>
+                <p>Développeur & Étudiant</p>
             </div>
+            <div class="footer__links">
+                <a href="https://github.com/ton-profil" target="_blank" class="footer__link">GitHub 🐙</a>
+                <a href="https://linkedin.com/in/ton-profil" target="_blank" class="footer__link">LinkedIn 💼</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 - Conçu et codé avec soin.</p>
         </div>
     </footer>
 

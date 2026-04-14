@@ -1,53 +1,72 @@
-// On attend que le DOM soit entièrement chargé avant d'exécuter le script
 document.addEventListener('DOMContentLoaded', () => {
     
     /* =========================================
-       1. Gestion du Mode Sombre / Clair
+       1. Mode Sombre / Clair (Dark Mode)
        ========================================= */
     const themeBtn = document.getElementById('theme-btn');
-    
-    // Vérifier si l'utilisateur a déjà un thème sauvegardé dans le localStorage
     const savedTheme = localStorage.getItem('theme');
     
-    // Si un thème est sauvegardé, on l'applique au chargement
     if (savedTheme) {
         document.documentElement.setAttribute('data-theme', savedTheme);
+        themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     }
 
-    // Écouteur d'événement sur le bouton
     themeBtn.addEventListener('click', () => {
-        // On récupère le thème actuel
         const currentTheme = document.documentElement.getAttribute('data-theme');
-        
-        // On bascule (si c'est 'dark' on passe à 'light', sinon on passe à 'dark')
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         
-        // On applique le nouveau thème sur la balise <html>
         document.documentElement.setAttribute('data-theme', newTheme);
-        
-        // On sauvegarde le choix dans le navigateur
         localStorage.setItem('theme', newTheme);
+        
+        // Change l'emoji du bouton
+        themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
     });
 
 
     /* =========================================
-       2. Gestion du Menu Burger (Mobile)
+       2. Menu Mobile (Burger)
        ========================================= */
     const burgerBtn = document.getElementById('burger-btn');
     const navLinks = document.getElementById('nav-links');
     const links = document.querySelectorAll('.navbar__link');
 
-    // Afficher / Masquer le menu au clic sur le bouton burger
     burgerBtn.addEventListener('click', () => {
         navLinks.classList.toggle('is-active');
+        burgerBtn.classList.toggle('is-active');
     });
 
-    // Fermer le menu automatiquement quand on clique sur un lien (très important pour les One-Page)
+    // Fermeture automatique au clic
     links.forEach(link => {
         link.addEventListener('click', () => {
-            if (navLinks.classList.contains('is-active')) {
-                navLinks.classList.remove('is-active');
+            navLinks.classList.remove('is-active');
+            burgerBtn.classList.remove('is-active');
+        });
+    });
+
+    /* =========================================
+       3. Animation au défilement (Scroll Reveal)
+       ========================================= */
+    // On sélectionne tous les éléments avec la classe .reveal
+    const reveals = document.querySelectorAll('.reveal');
+
+    // L'API IntersectionObserver vérifie si un élément entre dans la vue de l'écran
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // Se déclenche quand 15% de l'élément est visible
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Optionnel : on arrête d'observer une fois affiché
+                observer.unobserve(entry.target); 
             }
         });
+    }, observerOptions);
+
+    reveals.forEach(reveal => {
+        revealObserver.observe(reveal);
     });
 });
