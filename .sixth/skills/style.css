@@ -236,12 +236,25 @@ a { text-decoration: none; color: inherit; }
     box-shadow: var(--shadow);
     transition: var(--transition);
     cursor: default;
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 12px; /* L'espace entre l'icône et le texte */
+}
+
+.skill-tag i {
+    font-size: 1.4rem; /* Rend l'icône un peu plus grosse que le texte */
+    transition: transform 0.3s ease;
 }
 
 .skill-tag:hover {
     transform: translateY(-5px);
     border-color: var(--primary-color);
     color: var(--primary-color);
+}
+
+.skill-tag:hover i {
+    transform: scale(1.15) rotate(5deg);
 }
 
 /* =========================================
