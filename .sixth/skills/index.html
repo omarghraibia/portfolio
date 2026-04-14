@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Étudiant en Informatique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar container">
+            <div class="navbar__logo">OG.</div>
+            
+            <button class="navbar__burger" id="burger-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="navbar__links" id="nav-links">
+                <li><a href="#hero" class="navbar__link">Accueil</a></li>
+                <li><a href="#about" class="navbar__link">À propos</a></li>
+                <li><a href="#skills" class="navbar__link">Compétences</a></li>
+                <li><a href="#projects" class="navbar__link">Projets</a></li>
+            </ul>
+
+            <button class="navbar__theme-toggle" id="theme-btn" aria-label="Changer de thème">
+                🌓
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero container">
+            <div class="hero__content">
+                <h1 class="hero__title">Étudiant en BUT Informatique <br>& Développeur Full-Stack</h1>
+                <p class="hero__subtitle">Passionné par l'ingénierie logicielle, je conçois des applications robustes et des interfaces esthétiques.</p>
+                <a href="#projects" class="btn btn--primary">Voir mes projets</a>
+            </div>
+        </section>
+
+        <section id="about" class="about container section">
+            <h2 class="section-title">À propos de moi</h2>
+            <p class="about__text">
+                Actuellement en première année de BUT Informatique à Grenoble, je me passionne pour le développement logiciel et web. J'aime comprendre comment les choses fonctionnent sous le capot, que ce soit en concevant des bases de données relationnelles ou en développant des applications complètes. Mon objectif est d'allier logique algorithmique et expérience utilisateur.
+            </p>
+        </section>
+
+        <section id="skills" class="skills container section">
+            <h2 class="section-title">Mes Compétences</h2>
+            <div class="skills__grid">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">HTML5 / CSS3</span>
+                <span class="skill-tag">JavaScript (Vanilla)</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">Assembleur 68000</span>
+                <span class="skill-tag">Git / GitHub</span>
+            </div>
+        </section>
+
+        <section id="projects" class="projects container section">
+            <h2 class="section-title">Mes Projets</h2>
+            <div class="projects__grid">
+                
+                <article class="project-card">
+                    <div class="project-card__img-placeholder">Image Projet 1</div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">G-Tech Circulaire</h3>
+                        <p class="project-card__desc">Projet entrepreneurial de courtage et réemploi de matériel scientifique et high-tech.</p>
+                        <div class="project-card__tags">
+                            <span class="tag">Management</span>
+                            <span class="tag">Conception</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-card__img-placeholder">Image Projet 2</div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Application de Gestion</h3>
+                        <p class="project-card__desc">Application de bureau permettant la gestion d'une base de données client.</p>
+                        <div class="project-card__tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-card__img-placeholder">Image Projet 3</div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Portfolio Personnel</h3>
+                        <p class="project-card__desc">Création d'un site web performant sans aucun framework pour consolider mes acquis.</p>
+                        <div class="project-card__tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JS</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__content">
+            <p>&copy; 2026 - Portfolio créé de zéro.</p>
+            <div class="footer__links">
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="mailto:contact@email.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
