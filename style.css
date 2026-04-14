@@ -1,0 +1,315 @@
+/* =========================================
+   Variables (Gestion du thème)
+   ========================================= */
+:root {
+    /* Couleurs Mode Clair (par défaut) */
+    --bg-color: #f8fafc;
+    --text-color: #0f172a;
+    --text-muted: #475569;
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    
+    /* Typographie */
+    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --transition-speed: 0.3s;
+}
+
+/* Surcharge des variables pour le Mode Sombre */
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary-color: #3b82f6;
+    --primary-hover: #60a5fa;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+}
+
+/* =========================================
+   Reset & Base
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial pour que le padding ne casse pas la largeur */
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* =========================================
+   Composants (BEM : Block__Element--Modifier)
+   ========================================= */
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.btn--primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Navigation */
+.header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color var(--transition-speed);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.navbar__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.navbar__links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar__link {
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navbar__link:hover {
+    color: var(--primary-color);
+}
+
+.navbar__theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.navbar__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar__burger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero__subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* À propos & Compétences */
+.about__text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.skills__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill-tag {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+}
+
+/* Projets (CSS Grid magique !) */
+.projects__grid {
+    display: grid;
+    /* Crée automatiquement autant de colonnes de 300px min que possible */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card__img-placeholder {
+    height: 200px;
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+.project-card__content {
+    padding: 20px;
+}
+
+.project-card__title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.project-card__desc {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    font-size: 0.8rem;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer__content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer__links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer__links a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   Responsive (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .navbar__burger {
+        display: flex;
+    }
+
+    .navbar__links {
+        display: none; /* Masqué par défaut sur mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    /* Classe  via JavaScript pour afficher le menu */
+    .navbar__links.is-active {
+        display: flex;
+    }
+
+    .hero__title {
+        font-size: 2.2rem;
+    }
+}
