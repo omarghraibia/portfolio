@@ -1,142 +1,430 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr" data-theme="dark" data-lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Tech | Sécurité & Dev</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>Omar Ghraibia — Tech & Cyber Portfolio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <span class="logo">&lt;OG /&gt;</span>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-controls">
-                <button id="lang-toggle"><i class="fa-solid fa-globe"></i></button>
-                <button id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
-            </div>
+<div class="grid-bg"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<div class="controls-bar" id="controlsBar">
+  <button class="toggle-btn" id="themeToggle" aria-label="Toggle theme">
+    <span class="toggle-icon" id="themeIcon">🌙</span>
+    <span id="themeLabel">DARK</span>
+  </button>
+  <div class="lang-btn">
+    <span class="lang-option active" id="langFR" onclick="setLang('fr')">FR</span>
+    <span class="lang-option" id="langEN" onclick="setLang('en')">EN</span>
+  </div>
+</div>
+
+<nav>
+  <a href="#hero" class="nav-logo">
+    <span class="bracket">[</span>O.GHRAIBIA<span class="slash">/</span>TECH<span class="bracket">]</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about"    data-i18n="nav_about">À_propos</a></li>
+    <li><a href="#formation" data-i18n="nav_formation">Formation</a></li>
+    <li><a href="#skills"   data-i18n="nav_skills">Compétences</a></li>
+    <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
+    <li><a href="#contact-section" data-i18n="nav_contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"    data-i18n="nav_about"    onclick="closeMobile()">À propos</a>
+  <a href="#formation" data-i18n="nav_formation" onclick="closeMobile()">Formation</a>
+  <a href="#skills"   data-i18n="nav_skills"   onclick="closeMobile()">Compétences</a>
+  <a href="#projects" data-i18n="nav_projects" onclick="closeMobile()">Projets</a>
+  <a href="#contact-section" data-i18n="nav_contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<section id="hero">
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-orb o3"></div>
+
+  <div class="avatar-wrap">
+    <div class="avatar-ring"></div>
+    <div class="avatar-ring2"></div>
+    <div class="avatar-img">
+      <div class="avatar-svg">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="18" stroke="var(--accent)" stroke-width="1.5" opacity="0.85"/>
+          <path d="M10 72c0-16.569 13.431-30 30-30s30 13.431 30 30" stroke="var(--accent)" stroke-width="1.5" opacity="0.85"/>
+          <circle cx="40" cy="40" r="38" stroke="var(--accent)" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.25"/>
+          <circle cx="40" cy="40" r="30" stroke="var(--accent2)" stroke-width="0.4" stroke-dasharray="2 6" opacity="0.2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-badge">
+    <div class="status-dot"></div>
+    <span data-i18n="hero_status">DISPONIBLE POUR STAGES & ALTERNANCE</span>
+  </div>
+
+  <h1 class="hero-title">
+    Omar <span class="hero-name-accent">Ghraibia</span>
+  </h1>
+
+  <p class="hero-role" data-i18n="hero_role">Étudiant Informatique — Développement · Systèmes · Sécurité</p>
+  <div class="typewriter" id="typewriter"><span class="cursor-blink"></span></div>
+
+  <div class="hero-badges">
+    <span class="hero-badge hi" data-i18n="badge_iut">BUT Informatique — IUT2 Grenoble</span>
+    <span class="hero-badge" data-i18n="badge_year">1ère Année</span>
+    <span class="hero-badge" data-i18n="badge_ctf">Full-Stack Dev</span>
+    <span class="hero-badge" data-i18n="badge_open">Open to Remote</span>
+  </div>
+
+  <p class="hero-desc" data-i18n="hero_desc">
+    Passionné par le <strong>développement web (React/JS)</strong> et l'architecture bas niveau (Systèmes, Réseaux, Sécurité). Je transforme ma curiosité technique en projets concrets, de la création d'interfaces fluides à l'analyse réseau.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#projects" class="btn btn-primary" data-i18n="cta_projects">Voir mes projets →</a>
+    <a href="#"         class="btn btn-outline"  data-i18n="cta_cv">Télécharger CV</a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <p class="section-label">// 01. <span data-i18n="nav_about">À propos</span></p>
+      <h2 class="section-title" data-i18n="about_title">Qui suis-je ?</h2>
+      <div class="section-divider"></div>
+
+      <div class="objective-box">
+        <div class="obj-label">🎯 <span data-i18n="obj_label">OBJECTIF PROFESSIONNEL</span></div>
+        <p data-i18n="objective">Décrocher une opportunité professionnelle (stage/alternance) pour appliquer mes compétences en développement logiciel et architecture système au sein d'un environnement stimulant.</p>
+      </div>
+
+      <p data-i18n="about_p1">Actuellement en <strong>BUT Informatique (1ère année)</strong> à l'IUT2 de Grenoble. Je cultive un profil polyvalent avec un fort attrait pour la création d'applications robustes et la compréhension des couches basses de l'informatique.</p>
+      <p data-i18n="about_p2">Qu'il s'agisse de concevoir une architecture web avec <strong>React</strong>, de développer des algorithmes en <strong>Java</strong>, ou de réaliser des audits réseau sur <strong>Kali Linux</strong>, mon approche est toujours orientée vers la pratique et l'optimisation.</p>
+    </div>
+
+    <div class="about-right reveal">
+      <div class="stat-box">
+        <div class="stat-num">1+</div>
+        <div class="stat-info">
+          <div class="stat-label" data-i18n="stat1_label">An de formation</div>
+          <div class="stat-sub">BUT Info — IUT2 Grenoble</div>
         </div>
-    </nav>
-
-    <header id="accueil" class="hero">
-        <div class="glow-bg"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                Sécuriser le futur,<br>
-                <span class="gradient-text">concevoir l'invisible.</span>
-            </h1>
-            <p class="hero-subtitle">Architecture Système, Sécurité & Développement Front-End.</p>
-            <a href="#projets" class="btn-primary">Voir les projets</a>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">4+</div>
+        <div class="stat-info">
+          <div class="stat-label" data-i18n="stat2_label">Projets concrets</div>
+          <div class="stat-sub" data-i18n="stat2_sub">Web, Java, Systèmes</div>
         </div>
-    </header>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="competences" class="section">
-        <h2 class="section-title"><span class="accent">01.</span> Compétences</h2>
-        <div class="grid-container">
-            <div class="tilt-card">
-                <div class="tilt-content">
-                    <i class="fa-solid fa-shield-halved icon-cyan"></i>
-                    <h3>Sécurité & Audit</h3>
-                    <ul>
-                        <li><span class="accent">▹</span> Kali Linux</li>
-                        <li><span class="accent">▹</span> Analyse réseau</li>
-                    </ul>
-                </div>
+<section id="formation">
+  <div style="max-width:1100px;margin:0 auto;padding:0 0 0 0;">
+    <div class="reveal" style="margin-bottom:0">
+      <p class="section-label">// 02. <span data-i18n="nav_formation">Formation</span></p>
+      <h2 class="section-title" data-i18n="formation_title">Parcours Académique</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="formation-inner">
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+          <div class="tl-card">
+            <div class="tl-date">2025 → <span data-i18n="present">Présent</span></div>
+            <div class="tl-title" data-i18n="edu1_title">BUT Informatique (1ère Année)</div>
+            <div class="tl-school">IUT2 de Grenoble — Université Grenoble Alpes</div>
+            <div class="tl-desc" data-i18n="edu1_desc">Formation intensive en développement logiciel, architecture des systèmes et réseaux. Apprentissage de l'algorithmique avancée, de la programmation orientée objet et de la gestion de projets informatiques.</div>
+            <div class="tl-tags">
+              <span class="tl-tag">Java</span><span class="tl-tag">Web Dev</span>
+              <span class="tl-tag">Réseaux</span><span class="tl-tag">Architecture</span>
             </div>
-            <div class="tilt-card">
-                <div class="tilt-content">
-                    <i class="fa-solid fa-microchip icon-purple"></i>
-                    <h3>Systèmes & Bas Niveau</h3>
-                    <ul>
-                        <li><span class="accent">▹</span> Assembleur 68k</li>
-                        <li><span class="accent">▹</span> Architecture système</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tilt-card">
-                <div class="tilt-content">
-                    <i class="fa-solid fa-code icon-emerald"></i>
-                    <h3>Développement</h3>
-                    <ul>
-                        <li><span class="accent">▹</span> HTML/CSS/JS</li>
-                        <li><span class="accent">▹</span> Java</li>
-                    </ul>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="projets" class="section">
-        <h2 class="section-title"><span class="accent">02.</span> Projets</h2>
-        <div class="grid-container grid-2">
-            
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Bot Conversationnel Java</h3>
-                    <div class="project-links">
-                        <a href="#"><i class="fa-brands fa-github"></i></a>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <div class="project-meta">
-                    <span>Durée: 3 semaines</span> | <span>Équipe: Solo</span>
-                </div>
-                <p>Développement d'un agent conversationnel intelligent avec traitement des entrées utilisateurs.</p>
-                <div class="project-impact">
-                    <strong>Impact / Solution :</strong><br>
-                    Algorithmique avancée et maîtrise de la POO.
-                </div>
-                <div class="project-tags">
-                    <span class="tag">Java</span>
-                    <span class="tag">POO</span>
-                </div>
-            </div>
+<section id="skills">
+  <div class="skills-header reveal">
+    <p class="section-label">// 03. <span data-i18n="nav_skills">Compétences</span></p>
+    <h2 class="section-title" data-i18n="skills_title">Arsenal Technique</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-card-inner">
+      <span class="skill-cat cat-dev">DEV</span>
+      <span class="skill-icon">⚛️</span>
+      <div class="skill-name">React / JS</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+      <div class="skill-level">85%</div>
+    </div></div>
+    <div class="skill-card"><div class="skill-card-inner">
+      <span class="skill-cat cat-dev">DEV</span>
+      <span class="skill-icon">☕</span>
+      <div class="skill-name">Java / POO</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+      <div class="skill-level">80%</div>
+    </div></div>
+    <div class="skill-card"><div class="skill-card-inner">
+      <span class="skill-cat cat-dev">DEV</span>
+      <span class="skill-icon">🎨</span>
+      <div class="skill-name">HTML / CSS</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+      <div class="skill-level">90%</div>
+    </div></div>
+    <div class="skill-card"><div class="skill-card-inner">
+      <span class="skill-cat cat-sys">SYSTÈME</span>
+      <span class="skill-icon">🖥️</span>
+      <div class="skill-name">Assembleur 68k</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div>
+      <div class="skill-level">75%</div>
+    </div></div>
+    <div class="skill-card"><div class="skill-card-inner">
+      <span class="skill-cat cat-sec">SÉCURITÉ</span>
+      <span class="skill-icon">🐉</span>
+      <div class="skill-name">Kali Linux</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div>
+      <div class="skill-level">70%</div>
+    </div></div>
+    <div class="skill-card"><div class="skill-card-inner">
+      <span class="skill-cat cat-net">RÉSEAU</span>
+      <span class="skill-icon">🌐</span>
+      <div class="skill-name">Analyse Réseau</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div>
+      <div class="skill-level">72%</div>
+    </div></div>
+    <div class="skill-card"><div class="skill-card-inner">
+      <span class="skill-cat cat-sys">SYSTÈME</span>
+      <span class="skill-icon">🐧</span>
+      <div class="skill-name">Linux / Bash</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+      <div class="skill-level">80%</div>
+    </div></div>
+    <div class="skill-card"><div class="skill-card-inner">
+      <span class="skill-cat cat-sys">SYSTÈME</span>
+      <span class="skill-icon">🔧</span>
+      <div class="skill-name">Git / GitHub</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div>
+      <div class="skill-level">78%</div>
+    </div></div>
+  </div>
+</section>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Audit & Analyse Réseau</h3>
-                    <div class="project-links">
-                        <a href="#"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="project-meta">
-                    <span>Outils: Kali Linux</span>
-                </div>
-                <p>Cartographie et analyse de vulnérabilités sur des architectures réseaux simulées.</p>
-                <div class="project-impact">
-                    <strong>Impact / Solution :</strong><br>
-                    Détection et sécurisation de failles.
-                </div>
-                <div class="project-tags">
-                    <span class="tag">Kali Linux</span>
-                    <span class="tag">Réseaux</span>
-                </div>
-            </div>
+<section id="projects">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reveal">
+      <p class="section-label">// 04. <span data-i18n="nav_projects">Projets</span></p>
+      <h2 class="section-title" data-i18n="projects_title">Réalisations Concrètes</h2>
+      <div class="section-divider"></div>
+    </div>
+  </div>
+  <div class="projects-grid">
 
+    <div class="proj-card reveal">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#071828,#0a2845)">
+        <div class="proj-thumb-overlay"></div>
+        <div class="proj-thumb-badge">LOGICIEL</div>
+        <div class="proj-impact">Algorithmique & POO</div>
+        <span class="proj-icon-big">☕</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-header">
+          <span class="proj-emoji">🤖</span>
+          <div>
+            <div class="proj-title">Bot Conversationnel</div>
+            <div class="proj-tag" data-i18n="proj1_tag">Développement · Java</div>
+          </div>
         </div>
-    </section>
-
-    <footer id="contact">
-        <p>© 2026 - Construit sans framework.</p>
-        <div class="footer-links">
-            <a href="#"><i class="fa-brands fa-github"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            <button id="copy-email" class="copy-btn">
-                <i class="fa-solid fa-envelope"></i> <span id="email-text">Email</span>
-            </button>
+        <p class="proj-desc" data-i18n="proj1_desc">Développement complet d'un agent conversationnel intelligent. Traitement des entrées utilisateurs, implémentation d'algorithmes de parsing et architecture basée sur la Programmation Orientée Objet (POO).</p>
+        <div class="proj-meta">
+          <div class="proj-meta-item">📅 <span>Avril 2026</span></div>
+          <div class="proj-meta-item">⏱️ <span>Projet Universitaire</span></div>
         </div>
-    </footer>
+        <div class="proj-tech">
+          <span class="tech-pill">Java</span><span class="tech-pill">POO</span>
+          <span class="tech-pill">Algorithmique</span>
+        </div>
+        <div class="proj-footer">
+          <a href="#" class="btn-code">&lt;/&gt; Code Source</a>
+        </div>
+      </div>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="proj-card reveal" style="transition-delay:0.1s">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#120820,#1a0a2e)">
+        <div class="proj-thumb-overlay"></div>
+        <div class="proj-thumb-badge">WEB DEV</div>
+        <div class="proj-impact">Vitrine Professionnelle</div>
+        <span class="proj-icon-big">⚕️</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-header">
+          <span class="proj-emoji">👨‍⚕️</span>
+          <div>
+            <div class="proj-title">Site Web Kinésithérapie</div>
+            <div class="proj-tag" data-i18n="proj2_tag">Front-End · React</div>
+          </div>
+        </div>
+        <p class="proj-desc" data-i18n="proj2_desc">Création d'un site web professionnel pour un cabinet médical de kinésithérapie. Interface responsive, présentation des expertises cliniques et optimisation UI/UX pour faciliter la prise de rendez-vous.</p>
+        <div class="proj-meta">
+          <div class="proj-meta-item">📅 <span>2026</span></div>
+          <div class="proj-meta-item">👥 <span data-i18n="solo">Projet Freelance</span></div>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-pill">React</span><span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">HTML/CSS</span>
+        </div>
+        <div class="proj-footer">
+          <a href="#" class="btn-demo">⚡ Live Demo</a>
+          <a href="#" class="btn-code">&lt;/&gt; Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" style="transition-delay:0.2s">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#071820,#0a2015)">
+        <div class="proj-thumb-overlay"></div>
+        <div class="proj-thumb-badge">SÉCURITÉ</div>
+        <div class="proj-impact">Environnement d'Audit</div>
+        <span class="proj-icon-big">🐉</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-header">
+          <span class="proj-emoji">🕵️</span>
+          <div>
+            <div class="proj-title">Audit & Analyse Réseau</div>
+            <div class="proj-tag" data-i18n="proj3_tag">Cybersécurité · Systèmes</div>
+          </div>
+        </div>
+        <p class="proj-desc" data-i18n="proj3_desc">Cartographie de réseaux et analyse de vulnérabilités via des environnements simulés. Utilisation approfondie des outils de monitoring et sécurisation des protocoles de communication.</p>
+        <div class="proj-meta">
+          <div class="proj-meta-item">📅 <span>Formation Continue</span></div>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-pill">Kali Linux</span><span class="tech-pill">Réseaux TCP/IP</span>
+          <span class="tech-pill">Wireshark</span>
+        </div>
+        <div class="proj-footer">
+          <a href="#" class="btn-code">En savoir plus</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact-section">
+  <div class="contact-inner">
+    <div class="contact-info reveal">
+      <p class="section-label">// 05. <span data-i18n="nav_contact">Contact</span></p>
+      <h2 class="section-title" data-i18n="contact_title">Travaillons ensemble</h2>
+      <div class="section-divider"></div>
+      <p data-i18n="contact_desc">Disponible pour échanger sur des opportunités de stage, alternance ou de nouveaux projets.</p>
+      <div class="contact-item">
+        <span class="c-icon">📧</span>
+        <div>
+          <div class="c-label">EMAIL</div>
+          <div class="c-val">contact.omar.ghraibia@email.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="c-icon">📍</span>
+        <div>
+          <div class="c-label">LOCALISATION</div>
+          <div class="c-val" data-i18n="location">Grenoble, France (Campus IUT2)</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="c-icon">💼</span>
+        <div>
+          <div class="c-label">LINKEDIN</div>
+          <div class="c-val">linkedin.com/in/omar-ghraibia</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal" style="transition-delay:0.15s">
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_name">VOTRE NOM</label>
+        <input type="text" class="form-input" placeholder="Jean Dupont" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">EMAIL</label>
+        <input type="email" class="form-input" placeholder="recruteur@company.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_msg">MESSAGE</label>
+        <textarea class="form-textarea" placeholder="Votre message..."></textarea>
+      </div>
+      <button class="form-submit" data-i18n="form_send">ENVOYER LE MESSAGE →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-logo">[O.GHRAIBIA/TECH]</span>
+        <p class="footer-bio" data-i18n="footer_bio">Étudiant BUT Informatique à l'IUT2 de Grenoble. Développeur curieux, passionné par la création de solutions web et la compréhension de l'architecture des systèmes.</p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_nav">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#hero" data-i18n="nav_home">› Accueil</a></li>
+          <li><a href="#about" data-i18n="nav_about">› À propos</a></li>
+          <li><a href="#formation" data-i18n="nav_formation">› Formation</a></li>
+          <li><a href="#skills" data-i18n="nav_skills">› Compétences</a></li>
+          <li><a href="#projects" data-i18n="nav_projects">› Projets</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_resources">Ressources</div>
+        <ul class="footer-links">
+          <li><a href="#" data-i18n="footer_cv">› Mon CV (PDF)</a></li>
+          <li><a href="#">› GitHub</a></li>
+          <li><a href="#">› LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item"><span class="c-icon2">📧</span> contact@omar.fr</div>
+        <div class="footer-contact-item"><span class="c-icon2">📍</span> <span data-i18n="location">Grenoble, France</span></div>
+        <div style="margin-top:1.2rem">
+          <a href="#" class="btn btn-primary" style="font-size:0.7rem;padding:10px 18px" data-i18n="footer_email_btn">Envoyer un email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span class="accent">Omar Ghraibia</span> — <span data-i18n="rights">Tous droits réservés</span></div>
+      <div class="footer-version">v1.0.0 // TECH_PORTFOLIO</div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
