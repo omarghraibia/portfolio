@@ -1,72 +1,87 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     
-    /* =========================================
-       1. Mode Sombre / Clair (Dark Mode)
-       ========================================= */
-    const themeBtn = document.getElementById('theme-btn');
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-    }
+    // ==========================================
+    // 1. GESTION DU THÈME (Dark / Light Mode)
+    // ==========================================
+    const themeBtn = document.getElementById("theme-toggle");
+    const htmlElement = document.documentElement;
 
-    themeBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // Change l'emoji du bouton
-        themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    themeBtn.addEventListener("click", () => {
+        // Vérifie le thème actuel
+        const currentTheme = htmlElement.getAttribute("data-theme");
+        const icon = themeBtn.querySelector("i");
+
+        if (currentTheme === "dark") {
+            htmlElement.setAttribute("data-theme", "light");
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+        } else {
+            htmlElement.setAttribute("data-theme", "dark");
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+        }
     });
 
+    // ==========================================
+    // 2. EFFET 3D TILT (Cartes Compétences)
+    // ==========================================
+    /* Explication de l'effet :
+       On récupère les coordonnées de la souris sur la carte.
+       On calcule le centre de la carte.
+       Plus la souris s'éloigne du centre, plus l'angle de rotation (rotateX, rotateY) augmente.
+    */
+    const tiltCards = document.querySelectorAll(".tilt-card");
 
-    /* =========================================
-       2. Menu Mobile (Burger)
-       ========================================= */
-    const burgerBtn = document.getElementById('burger-btn');
-    const navLinks = document.getElementById('nav-links');
-    const links = document.querySelectorAll('.navbar__link');
+    tiltCards.forEach(card => {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            
+            // Position de la souris relative à la carte
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top;  
+            
+            // Centre de la carte
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calcul de la rotation (Ajuster les diviseurs pour augmenter/réduire l'inclinaison)
+            const rotateX = ((y - centerY) / centerY) * -10; // -10 deg max
+            const rotateY = ((x - centerX) / centerX) * 10;  // 10 deg max
 
-    burgerBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('is-active');
-        burgerBtn.classList.toggle('is-active');
-    });
+            // Application de la transformation avec une perspective pour la profondeur
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            card.style.transition = "none"; // Désactive la transition pendant le mouvement pour la fluidité
+        });
 
-    // Fermeture automatique au clic
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('is-active');
-            burgerBtn.classList.remove('is-active');
+        // Remise à zéro quand la souris quitte la carte
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            card.style.transition = "transform 0.5s ease"; // Rétablit une animation douce de retour
         });
     });
 
-    /* =========================================
-       3. Animation au défilement (Scroll Reveal)
-       ========================================= */
-    // On sélectionne tous les éléments avec la classe .reveal
-    const reveals = document.querySelectorAll('.reveal');
+    // ==========================================
+    // 3. BOUTON COPIER L'EMAIL
+    // ==========================================
+    const copyBtn = document.getElementById("copy-email");
+    const emailTextElement = document.getElementById("email-text");
+    const monEmail = "contact@tondomaine.com"; // Remplacer par ton vrai mail
 
-    // L'API IntersectionObserver vérifie si un élément entre dans la vue de l'écran
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15 // Se déclenche quand 15% de l'élément est visible
-    };
+    copyBtn.addEventListener("click", () => {
+        // Utilisation de l'API Presse-papiers du navigateur
+        navigator.clipboard.writeText(monEmail).then(() => {
+            // Toast / Feedback visuel
+            const icon = copyBtn.querySelector("i");
+            icon.className = "fa-solid fa-check";
+            icon.style.color = "var(--accent-emerald)";
+            emailTextElement.innerText = "Copié !";
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Optionnel : on arrête d'observer une fois affiché
-                observer.unobserve(entry.target); 
-            }
+            // Remise à l'état initial après 2 secondes
+            setTimeout(() => {
+                icon.className = "fa-solid fa-envelope";
+                icon.style.color = "";
+                emailTextElement.innerText = "Email";
+            }, 2000);
         });
-    }, observerOptions);
-
-    reveals.forEach(reveal => {
-        revealObserver.observe(reveal);
     });
 });

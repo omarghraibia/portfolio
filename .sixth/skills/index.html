@@ -1,162 +1,139 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar Ghraibia | Portfolio</title>
+    <title>Portfolio Tech | Sécurité & Dev</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar container">
-            <div class="navbar__logo">
-                <a href="#hero">Omar<span class="text-primary">.G</span></a>
-            </div>
-            
-            <button class="navbar__burger" id="burger-btn" aria-label="Ouvrir le menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
 
-            <ul class="navbar__links" id="nav-links">
-                <li><a href="#about" class="navbar__link">À propos</a></li>
-                <li><a href="#skills" class="navbar__link">Compétences</a></li>
-                <li><a href="#projects" class="navbar__link">Projets</a></li>
-                <li><a href="#contact" class="navbar__link">Contact</a></li>
+    <nav class="navbar">
+        <div class="nav-container">
+            <span class="logo">&lt;OG /&gt;</span>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-
-            <button class="navbar__theme-toggle" id="theme-btn" title="Changer de thème">🌙</button>
-        </nav>
-    </header>
-
-    <main>
-        <section id="hero" class="hero container reveal">
-            <div class="hero__content">
-                <p class="hero__greeting">Bonjour, je m'appelle</p>
-                <h1 class="hero__title">Omar Ghraibia</h1>
-                <h2 class="hero__subtitle">Étudiant en BUT Informatique & Développeur.</h2>
-                <p class="hero__desc">Actuellement étudiant à Grenoble, je conçois des solutions logicielles et des expériences web performantes. J'aime allier la rigueur de l'ingénierie et l'esthétique du design.</p>
-                <div class="hero__actions">
-                    <a href="#projects" class="btn btn--primary">Explorer mes projets 🚀</a>
-                    <a href="#contact" class="btn btn--outline">Me contacter ✉️</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about container section reveal">
-            <h2 class="section-title">À propos de moi 👨‍💻</h2>
-            <div class="about__content">
-                <p class="about__text">
-                    En formation universitaire, je me concentre sur la création d'architectures solides et de code propre. Que ce soit en manipulant des bases de données complexes ou en optimisant des interfaces utilisateur, je cherche toujours l'approche la plus logique et efficace. Je suis également investi dans l'écosystème de l'innovation locale.
-                </p>
-            </div>
-        </section>
-
-        <section id="skills" class="skills container section reveal">
-            <h2 class="section-title">Boîte à outils 🛠️</h2>
-           <div class="skills__grid">
-                <div class="skill-tag">
-                    <i class="devicon-java-plain colored"></i> Java
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-postgresql-plain colored"></i> PostgreSQL
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-html5-plain colored"></i> HTML5
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-css3-plain colored"></i> CSS3
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-javascript-plain colored"></i> JavaScript
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-bash-plain"></i> Bash / Scripting
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-git-plain colored"></i> Git
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-github-original"></i> GitHub
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-embeddedc-plain"></i> Assembleur 68000
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects container section reveal">
-            <h2 class="section-title">Mes Réalisations 📁</h2>
-            <div class="projects__grid">
-                
-                <article class="project-card">
-                    <div class="project-card__img-wrapper">
-                        <img src="https://picsum.photos/seed/gtech/600/400" alt="Illustration G-Tech" class="project-card__img">
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">G-Tech Circulaire</h3>
-                        <p class="project-card__desc">Projet entrepreneurial centré sur le courtage et le réemploi de matériel scientifique et high-tech dans la région grenobloise.</p>
-                        <div class="project-card__tags">
-                            <span class="tag">Entrepreneuriat</span>
-                            <span class="tag">Management</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-card__img-wrapper">
-                        <img src="https://picsum.photos/seed/java/600/400" alt="App Gestion Java" class="project-card__img">
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">App Gestion BDD</h3>
-                        <p class="project-card__desc">Conception et développement d'une application robuste permettant la manipulation et la gestion d'une base de données clients complète.</p>
-                        <div class="project-card__tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-card__img-wrapper">
-                        <img src="https://picsum.photos/seed/code/600/400" alt="Code Portfolio" class="project-card__img">
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">Portfolio Natif</h3>
-                        <p class="project-card__desc">Création de ce portfolio interactif sans aucun framework, pour maîtriser l'architecture CSS et les animations du DOM en JS.</p>
-                        <div class="project-card__tags">
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">JS natif</span>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <section id="contact" class="contact container section reveal">
-            <div class="contact__box">
-                <h2 class="contact__title">Prêt à collaborer ? 🤝</h2>
-                <p class="contact__text">Je suis toujours ouvert à de nouvelles opportunités de projets ou de stages. N'hésitez pas à m'envoyer un message !</p>
-                <a href="mailto:ton.email@exemple.com" class="btn btn--primary btn--large">Dites Bonjour !</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer__container">
-            <div class="footer__brand">
-                <h3>Omar Ghraibia</h3>
-                <p>Développeur & Étudiant</p>
-            </div>
-            <div class="footer__links">
-                <a href="https://github.com/omarghraibia" target="_blank" class="footer__link">GitHub 🐙</a>
-                <a href="https://www.linkedin.com/in/omar-ghraibia-112ab7175" target="_blank" class="footer__link">LinkedIn 💼</a>
+            <div class="nav-controls">
+                <button id="lang-toggle"><i class="fa-solid fa-globe"></i></button>
+                <button id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
             </div>
         </div>
-        <div class="footer__bottom">
-            <p>&copy; 2026 - Conçu et codé avec soin.</p>
+    </nav>
+
+    <header id="accueil" class="hero">
+        <div class="glow-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Sécuriser le futur,<br>
+                <span class="gradient-text">concevoir l'invisible.</span>
+            </h1>
+            <p class="hero-subtitle">Architecture Système, Sécurité & Développement Front-End.</p>
+            <a href="#projets" class="btn-primary">Voir les projets</a>
+        </div>
+    </header>
+
+    <section id="competences" class="section">
+        <h2 class="section-title"><span class="accent">01.</span> Compétences</h2>
+        <div class="grid-container">
+            <div class="tilt-card">
+                <div class="tilt-content">
+                    <i class="fa-solid fa-shield-halved icon-cyan"></i>
+                    <h3>Sécurité & Audit</h3>
+                    <ul>
+                        <li><span class="accent">▹</span> Kali Linux</li>
+                        <li><span class="accent">▹</span> Analyse réseau</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tilt-card">
+                <div class="tilt-content">
+                    <i class="fa-solid fa-microchip icon-purple"></i>
+                    <h3>Systèmes & Bas Niveau</h3>
+                    <ul>
+                        <li><span class="accent">▹</span> Assembleur 68k</li>
+                        <li><span class="accent">▹</span> Architecture système</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tilt-card">
+                <div class="tilt-content">
+                    <i class="fa-solid fa-code icon-emerald"></i>
+                    <h3>Développement</h3>
+                    <ul>
+                        <li><span class="accent">▹</span> HTML/CSS/JS</li>
+                        <li><span class="accent">▹</span> Java</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="section">
+        <h2 class="section-title"><span class="accent">02.</span> Projets</h2>
+        <div class="grid-container grid-2">
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Bot Conversationnel Java</h3>
+                    <div class="project-links">
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <span>Durée: 3 semaines</span> | <span>Équipe: Solo</span>
+                </div>
+                <p>Développement d'un agent conversationnel intelligent avec traitement des entrées utilisateurs.</p>
+                <div class="project-impact">
+                    <strong>Impact / Solution :</strong><br>
+                    Algorithmique avancée et maîtrise de la POO.
+                </div>
+                <div class="project-tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">POO</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Audit & Analyse Réseau</h3>
+                    <div class="project-links">
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <span>Outils: Kali Linux</span>
+                </div>
+                <p>Cartographie et analyse de vulnérabilités sur des architectures réseaux simulées.</p>
+                <div class="project-impact">
+                    <strong>Impact / Solution :</strong><br>
+                    Détection et sécurisation de failles.
+                </div>
+                <div class="project-tags">
+                    <span class="tag">Kali Linux</span>
+                    <span class="tag">Réseaux</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>© 2026 - Construit sans framework.</p>
+        <div class="footer-links">
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <button id="copy-email" class="copy-btn">
+                <i class="fa-solid fa-envelope"></i> <span id="email-text">Email</span>
+            </button>
         </div>
     </footer>
 
